@@ -1,5 +1,5 @@
 {% set name = "nlp" %}
-{% set version = "0.3.0" %}
+{% set version = "0.4.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: a2b0f469a29d0dd6235a1ab8c218bf745c904ba9fdf9cd150c52ba28de345b81
+  sha256: 0aa6bc966ffc2d2be7248bd71f258360281cd717c10811e1b55bb2fa50bf79d4
 
 build:
   number: 0
   script: {{ PYTHON }} -m pip install . -vv
-  skip: True  # [py<36]
+  skip: true  # [py<36]
 
 requirements:
   host:
@@ -41,7 +41,7 @@ about:
   license: Apache-2.0
   license_family: APACHE
   license_file: LICENSE
-  summary: "HuggingFace/NLP is an open library of NLP datasets."
+  summary: HuggingFace/NLP is an open library of NLP datasets.
   doc_url: https://huggingface.co/nlp/
   dev_url: https://github.com/huggingface/nlp
 
