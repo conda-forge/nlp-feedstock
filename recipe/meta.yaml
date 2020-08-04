@@ -12,7 +12,7 @@ source:
 build:
   number: 0
   script: {{ PYTHON }} -m pip install . -vv
-  skip: true  # [py<36]
+  noarch: python
 
 requirements:
   host:
@@ -22,11 +22,13 @@ requirements:
     - dill
     - filelock
     - numpy
-    - pyarrow ==0.17.1
+    - pandas
+    - pyarrow >=0.16.0
     - python
     - requests >=2.19.0
     - tqdm >=4.27
-    - dataclasses  # [py36]
+    - xxhash
+    - dataclasses
 
 test:
   imports:
@@ -35,6 +37,10 @@ test:
     - nlp.datasets
     - nlp.metrics
     - nlp.utils
+  requires:
+    - pip
+  commands:
+    - pip check
 
 about:
   home: https://github.com/huggingface/nlp
