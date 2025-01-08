@@ -6,25 +6,25 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: 0aa6bc966ffc2d2be7248bd71f258360281cd717c10811e1b55bb2fa50bf79d4
 
 build:
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install . -vv
   noarch: python
 
 requirements:
   host:
     - pip
-    - python
+    - python {{ python_min }}
   run:
     - dill
     - filelock
     - numpy
     - pandas
     - pyarrow >=0.16.0
-    - python
+    - python >={{ python_min }}
     - requests >=2.19.0
     - tqdm >=4.27
     - python-xxhash
@@ -39,6 +39,7 @@ test:
     - nlp.utils
   requires:
     - pip
+    - python {{ python_min }}
   commands:
     - pip check
 
